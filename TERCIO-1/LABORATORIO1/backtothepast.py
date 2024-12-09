@@ -27,7 +27,7 @@ def main():
         if line:
             # Split the line into day, month, and year using basic string operations
             parts = line.split()
-            day = int(parts[0])
+            day = int(parts[4])
             month = int(parts[1])
             year = int(parts[2])
             
