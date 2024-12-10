@@ -18,6 +18,7 @@ def union(i, j, parent, rank):
                 rank[root_i] += 1
 
 def process_test_case(data, start_index):
+    
     index = start_index
     if data[index].strip() == "":
         index += 1
@@ -50,6 +51,7 @@ def process_test_case(data, start_index):
     return successful_queries, unsuccessful_queries, index
 
 def main():
+
     input_data = stdin.read().splitlines()
     current_line = 0
     num_test_cases = int(input_data[current_line].strip())
