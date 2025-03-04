@@ -15,7 +15,7 @@ def solve_maze_fast(maze, rows, cols):
 
         
         for j in range(1, cols):
-            # Choose minimum path from left or top
+           
             costs[j] = min(costs[j], costs[j-1]) + maze[i][j]
             
     return costs[-1]

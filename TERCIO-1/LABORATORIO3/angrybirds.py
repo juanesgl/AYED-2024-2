@@ -1,40 +1,40 @@
 def main():
-    testcase = int(input())
+    num_cases = int(input())
     
-    while testcase > 0:
-        testcase -= 1
+    while num_cases > 0:
+        num_cases -= 1
         
-        n, m = map(int, input().split())
-        A = list(map(int, input().split()))
-        B = list(map(int, input().split()))
+        num_producers, num_consumers = map(int, input().split())
+        producer_prices = list(map(int, input().split()))
+        consumer_prices = list(map(int, input().split()))
         
-        C = A + B
-        C.append(0)
+        combined_prices = producer_prices + consumer_prices
+        combined_prices.append(0)
         
-        A.sort()
-        B.sort()
-        C.sort()
+        producer_prices.sort()
+        consumer_prices.sort()
+        combined_prices.sort()
         
-        price = 0
-        angry = float('inf')
-        idx1, idx2 = 0, 0
+        optimal_price = 0
+        min_angry_people = float('inf')
+        producer_index, consumer_index = 0, 0
         
-        for i in range(n + m + 1):
-            test = C[i]
+        for i in range(num_producers + num_consumers + 1):
+            current_price = combined_prices[i]
             
-            while idx1 < n and A[idx1] <= test:
-                idx1 += 1
+            while producer_index < num_producers and producer_prices[producer_index] <= current_price:
+                producer_index += 1
             
-            while idx2 < m and B[idx2] < test:
-                idx2 += 1
+            while consumer_index < num_consumers and consumer_prices[consumer_index] < current_price:
+                consumer_index += 1
             
-            v = n - idx1 + idx2
+            angry_count = num_producers - producer_index + consumer_index
             
-            if v < angry:
-                angry = v
-                price = test
+            if angry_count < min_angry_people:
+                min_angry_people = angry_count
+                optimal_price = current_price
         
-        print(price, angry)
+        print(optimal_price, min_angry_people)
 
 if __name__ == "__main__":
     main()
